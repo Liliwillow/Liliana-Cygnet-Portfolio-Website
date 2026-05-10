@@ -1,7 +1,8 @@
 import { Box, IconButton, useTheme, Button, Typography} from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ColorModeContext, tokens } from "../../theme";
+import { motion } from "framer-motion";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -16,13 +17,32 @@ const Topbar = () => {
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
     const navigate = useNavigate();
+    const [visible, setVisible] = useState(false);
+    const MotionBox = motion(Box);
 
-    return <Box display="flex" justifyContent="space-between" p={2}>
+    return <MotionBox 
+      
+      display="flex" 
+      justifyContent="space-between" 
+      p={2}
+      initial={{ y: -70 }}
+      whileHover={{ y: 0 }}
+      animate={{ y: -55 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 1000,
+      }}
+    >
+        
 
-        <Box 
-            display="flex" 
-            backgroundColor={colors.darkblue[400]} 
-            borderRadius="3px">
+      <Box 
+        display="flex" 
+        backgroundColor={colors.darkblue[400]} 
+        borderRadius="3px">
 
             <InputBase
                 sx={{ml:2, flex:1}}
@@ -34,8 +54,13 @@ const Topbar = () => {
         </Box>
 
         <Box display="flex">
-            <Button>
-              <Typography>Log In</Typography>
+            <Button
+              backgroundColor
+              border="2px solid"
+              borderRadius="10px"
+              borderColor={colors.white[100]}
+            >
+              <Typography color={colors.white[100]}>Log In</Typography>
             </Button>
             <IconButton onClick={colorMode.toggleColorMode}>
                 {theme.palette.mode === 'dark' ? (
@@ -54,8 +79,7 @@ const Topbar = () => {
                 <PersonOutlinedIcon/>
             </IconButton>
         </Box>
-    </Box>
-    
+    </MotionBox>
     
 
     
