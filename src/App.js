@@ -39,6 +39,7 @@ import ContactForm from "./components/Contact";
 // import Login from "./scenes/login";
 // import SignIn from "./scenes/signin";
 import Home from "./scenes/dashboard/Home";
+import Register from "./scenes/authenticator/Register";
 
 {/* <SkillButton icon={<img src={CloudLogo} alt="Cloud Logo" height="20" width="20"/>} label="Distributed Software"/>
  */}
@@ -48,6 +49,7 @@ import Home from "./scenes/dashboard/Home";
 
 function App() {
   const [theme, colorMode] = useMode();
+
 
   return (
     <ColorModeContext.Provider value ={colorMode}>
@@ -60,7 +62,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 {/* <Route path="/login" element={<Login/> }/> */}
-                {/* <Rotue path="/sign-in" element={<SignIn/>}/> */}
+                <Route path="/register" element={<Register/>}/>
               </Routes>
             </main>
           </div>

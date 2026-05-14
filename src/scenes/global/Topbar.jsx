@@ -54,13 +54,16 @@ const Topbar = () => {
         </Box>
 
         <Box display="flex">
-            <Button
-              backgroundColor
-              border="2px solid"
-              borderRadius="10px"
-              borderColor={colors.white[100]}
+            <Button onClick={() => navigate("/register")}
+              variant="outlined"
+              sx={{
+                border: "2px solid",
+                borderRadius: "6px",
+                borderColor: colors.black[900],
+                backgroundColor: colors.green[600]
+              }}
             >
-              <Typography color={colors.white[100]}>Log In</Typography>
+              <Typography color={colors.white[100]}>Register</Typography>
             </Button>
             <IconButton onClick={colorMode.toggleColorMode}>
                 {theme.palette.mode === 'dark' ? (
