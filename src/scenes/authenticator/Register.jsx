@@ -5,12 +5,42 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Register = () => {
-  const isNonMobile = useMediaQuery("(mind-width:600px)");
+  const isNonMobile = useMediaQuery("(min-width:600px)");
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const handleFormSubmit = (values) => {
-    console.log(values);
+  const handleFormSubmit = async (values, {resetForm}) => {
+    try{
+      const response = await fetch(
+        "http://localhost:3001/api/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(values)
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok()){
+        throw new Error(data.error || "Registration Failed");
+      }
+      
+      console.log("User Created:", data);
+
+      localStorage.setItem("token", data.token);
+      
+      alert("Registration Successful");
+
+      resetForm();
+
+
+    }
+    catch (error){
+      console.error(error)
+      alert(error.message);
+    }
   };
 
   const phoneRegExp = /^\\(:([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$/;
@@ -34,6 +64,8 @@ const Register = () => {
   const initialValues = {
     firstName: "",
     lastName: "",
+    username: "",
+    password: "",
     email: "",
     contact: ""
   };
@@ -60,7 +92,7 @@ const Register = () => {
                 backgroundColor={colors.darkblue[600]}
                 gridTemplateColumns="repeat(4, minmax(0, 1fr))"
                 sx={{
-                    "& > div": { gridColumn: isNonMobile ? undefined : "spand 4" },
+                    "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
                 }}
               >
                 <TextField
@@ -91,7 +123,7 @@ const Register = () => {
                   error={!!touched.lastName && !!errors.lastName}
                   helperText={touched.lastName && errors.lastName}
                   sx={{
-                    gridColumn: "span 10"
+                    gridColumn: "span 4"
                   }}
                 />
 
@@ -107,14 +139,14 @@ const Register = () => {
                   error={!!touched.username && !!errors.username}
                   helperText={touched.username && errors.username}
                   sx={{
-                    gridColumn: "span 10"
+                    gridColumn: "span 5"
                   }}
                 />
 
                 <TextField
                   fullWidth
                   variant="filled"
-                  type="text"
+                  type="password"
                   label="Password"
                   onBlur={handleBlur}
                   onChange={handleChange}
