@@ -29,7 +29,7 @@ const Register = () => {
       
       console.log("User Created:", data);
 
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("accessToken", data.accessToken);
       
       alert("Registration Successful");
 

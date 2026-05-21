@@ -63,6 +63,39 @@ app.post("/api/register", async (req, res) => {
             username: user.username
         }
     });
+
+    const accessToken = generateAccessToken(user);
+
+    const refreshToken = generateRefreshToken(user);
+
+    await prisma.refreshToken.create({
+      data: {
+        token: refreshToken,
+        userId: user.id,
+        expiresAt: new Date(
+            Date.now() + 7 * 24 * 60 * 60 * 1000
+        )
+      }
+    });
+
+    res.cookie(
+        "refreshToken",
+        refreshToken,
+        {
+          httpOnly: true,
+          secure: false,
+          sameSite: "strict",
+          maxAge: 7 * 24 * 60 * 60 * 1000
+        }
+    );
+
+    res.json({
+      accessToken,
+      user: {
+        id: user.id,
+        email: user.email
+      }
+    });
   }
   catch (error) {
     console.error(error);
@@ -71,5 +104,9 @@ app.post("/api/register", async (req, res) => {
         error: "Server error"
     });
   }
+});
+
+app.post("/api/signin", async (req, res) => {
+  
 });
 
