@@ -23,7 +23,7 @@ const Register = () => {
       );
 
       const data = await response.json();
-      if (!response.ok()){
+      if (!response.ok){
         throw new Error(data.error || "Registration Failed");
       }
       
@@ -71,7 +71,12 @@ const Register = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box 
+      px="200px"
+      py="75px"
+      alignSelf="center"
+      backgroundColor={colors.darkblue[600]}
+    >
         <Formik
           onSubmit={handleFormSubmit}
           initialValues={initialValues}
@@ -89,11 +94,12 @@ const Register = () => {
               <Box
                 display="grid"
                 gap="30px"
-                backgroundColor={colors.darkblue[600]}
+                alignSelf="center"
                 gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-                sx={{
-                    "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-                }}
+                // sx={{
+                //     "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+
+                // }}
               >
                 <TextField
                   fullWidth
@@ -107,7 +113,8 @@ const Register = () => {
                   error={!!touched.firstName && !!errors.firstName}
                   helperText={touched.firstName && errors.firstName}
                   sx={{
-                    gridColumn: "span 10"
+                    gridColumn: "span 2",
+                    gridRow: "1"
                   }}
                 />
 
@@ -123,7 +130,8 @@ const Register = () => {
                   error={!!touched.lastName && !!errors.lastName}
                   helperText={touched.lastName && errors.lastName}
                   sx={{
-                    gridColumn: "span 4"
+                    gridColumn: "span 2",
+                    gridRow: "1"
                   }}
                 />
 
@@ -139,7 +147,8 @@ const Register = () => {
                   error={!!touched.username && !!errors.username}
                   helperText={touched.username && errors.username}
                   sx={{
-                    gridColumn: "span 5"
+                    gridColumn: "span 4",
+                    gridRow: "2"
                   }}
                 />
 
@@ -155,7 +164,8 @@ const Register = () => {
                   error={!!touched.password && !!errors.password}
                   helperText={touched.password && errors.password}
                   sx={{
-                    gridColumn: "span 10"
+                    gridColumn: "span 4",
+                    gridRow: "3"
                   }}
                 />
 
@@ -171,7 +181,8 @@ const Register = () => {
                   error={!!touched.email && !!errors.email}
                   helperText={touched.email && errors.email}
                   sx={{
-                    gridColumn: "span 10"
+                    gridColumn: "span 2",
+                    gridRow: "4"
                   }}
                 />
 
@@ -187,7 +198,8 @@ const Register = () => {
                   error={!!touched.contact && !!errors.contact}
                   helperText={touched.contact && errors.contact}
                   sx={{
-                    gridColumn: "span 10"
+                    gridColumn: "span 2",
+                    gridRow: "4"
                   }}
                 />
 

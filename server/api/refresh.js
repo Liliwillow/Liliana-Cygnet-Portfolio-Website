@@ -1,5 +1,3 @@
-import { parseAnimateLayoutArgs } from "framer-motion";
-
 router.post("/refresh", async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken;
