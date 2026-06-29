@@ -5,27 +5,26 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "../server/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL")
 }
 
 model User {
   id String @id @default(cuid())
-  
+
   firstName String
   lastName  String
-  username  String   @unique
-  email     String   @unique
-  phone     String?  @unique
+  username  String @unique
+  email     String @unique
 
-  password  String
+  password String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  refreshTokens RefreshToken[]
 }
 
 model RefreshToken {

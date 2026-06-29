@@ -15,6 +15,7 @@ const Register = () => {
         "http://localhost:3001/api/register",
         {
           method: "POST",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json"
           },
@@ -42,9 +43,7 @@ const Register = () => {
       alert(error.message);
     }
   };
-
-  const phoneRegExp = /^\\(:([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$/;
-
+  
   const checkoutSchema = yup.object().shape({
     firstName: yup.string().required("required"),
     lastName: yup.string().required("required"),
@@ -57,8 +56,10 @@ const Register = () => {
       .matches(/[a-z]/, "Must contain a lowercase letter")
       .matches(/[0-9]/, "Must contain a number")
       .required("required"),
+    confirm: yup.string()
+    .oneOf([yup.ref("password")], "Passwords must match")
+    .required("Please confirm your password"),
     email: yup.string().email("invalid email").required("required"),
-    contact: yup.string().matches(phoneRegExp, "Phone Number is not valid").required("required")
   });
 
   const initialValues = {
@@ -66,8 +67,8 @@ const Register = () => {
     lastName: "",
     username: "",
     password: "",
-    email: "",
-    contact: ""
+    confirm: "",
+    email: ""
   };
 
   return (
@@ -81,6 +82,7 @@ const Register = () => {
           onSubmit={handleFormSubmit}
           initialValues={initialValues}
           validationSchema={checkoutSchema}
+          validateOnMount
         >
           {({
             values,
@@ -88,7 +90,9 @@ const Register = () => {
             touched,
             handleBlur,
             handleChange,
-            handleSubmit
+            handleSubmit,
+            isValid,
+            dirty
           }) => (
             <form onSubmit={handleSubmit}>
               <Box
@@ -168,7 +172,22 @@ const Register = () => {
                     gridRow: "3"
                   }}
                 />
-
+                <TextField
+                  fullWidth
+                  variant="filled"
+                  type="password"
+                  label="Confirm Password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.confirm}
+                  name="confirm"
+                  error={!!touched.confirm && !!errors.confirm}
+                  helperText={touched.confirm && errors.confirm}
+                  sx={{
+                    gridColumn: "span 4",
+                    gridRow: "4"
+                  }}
+                />
                 <TextField
                   fullWidth
                   variant="filled"
@@ -181,27 +200,28 @@ const Register = () => {
                   error={!!touched.email && !!errors.email}
                   helperText={touched.email && errors.email}
                   sx={{
-                    gridColumn: "span 2",
-                    gridRow: "4"
+                    gridColumn: "span 4",
+                    gridRow: "5"
                   }}
                 />
-
-                <TextField
+                <Button 
+                  type="submit"
                   fullWidth
-                  variant="filled"
-                  type="text"
-                  label="Phone"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.contact}
-                  name="contact"
-                  error={!!touched.contact && !!errors.contact}
-                  helperText={touched.contact && errors.contact}
+                  variant="outlined"
+                  disabled={!isValid || !dirty}
                   sx={{
-                    gridColumn: "span 2",
-                    gridRow: "4"
+                    color: colors.green[300],
+                    border: "2px solid",
+                    borderRadius: "2px",
+                    borderColor: colors.white[100],
+                    backgroundColor: colors.green[600],
+                    width: "30ch",
+                    gridRow: "6"
                   }}
-                />
+                  
+                > 
+                  Submit 
+                </Button>
 
               </Box>
             </form>
