@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import GitHubLogo from "../logos/github.png";
 import LinkedinLogo from  "../logos/linkedin.png";
 
+
 const LandingPage = ({ image, alt}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -22,9 +23,9 @@ const LandingPage = ({ image, alt}) => {
       px="75px"
       pt="75px"
     >
-        <Box
+        <MotionBox
           gridColumn="1 / 5"
-          gridRow="1 / 18"
+          gridRow="1 / 14"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -32,6 +33,10 @@ const LandingPage = ({ image, alt}) => {
           border="5px solid"
           borderRadius="10px"
           borderColor={colors.white[300]}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1}}
+          transition={{ duration: 0.6, delay: 0.8}}
+          viewport={{ amount: 0.9, once: true}}
         >
           <MotionImg
             src={image}
@@ -40,9 +45,11 @@ const LandingPage = ({ image, alt}) => {
             whileInView={{ opacity: 1, scale: 1}}
             transition={{ duration: 0.6, delay: 0.8}}
             viewport={{ amount: 0.9, once: true}}
-            style={{ width: "40%"}}
+            style={{ width: "100%"
+              
+            }}
           />
-        </Box>
+        </MotionBox>
         <MotionBox
           gridColumn="5 / 16"
           gridRow="1 / 8"

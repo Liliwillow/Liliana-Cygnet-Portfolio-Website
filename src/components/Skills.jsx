@@ -28,7 +28,7 @@ const Skills = ({ languages, software, other}) => {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1}}
         transition={{ duration: 0.6, delay: 0.8}}
-        viewport={{ amount: 0.9, once: true}}
+        viewport={{ amount: 0.2, once: true}}
       >
         <Typography fontSize="16px">Languages</Typography>
       </MotionBox>
@@ -41,7 +41,7 @@ const Skills = ({ languages, software, other}) => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1}}
           transition={{ duration: 0.6, delay: 0.8}}
-          viewport={{ amount: 0.9, once: true}}
+          viewport={{ amount: 0.2, once: true}}
           sx={{ flexWrap: 'wrap' }}
         >
             {languages}
@@ -55,7 +55,7 @@ const Skills = ({ languages, software, other}) => {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1}}
         transition={{ duration: 0.6, delay: 0.8}}
-        viewport={{ amount: 0.9, once: true}}
+        viewport={{ amount: 0.2, once: true}}
       >
         <Typography fontSize="16px">Software and Tools</Typography>
       </MotionBox>
@@ -68,7 +68,7 @@ const Skills = ({ languages, software, other}) => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1}}
           transition={{ duration: 0.6, delay: 0.8}}
-          viewport={{ amount: 0.9, once: true}}
+          viewport={{ amount: 0.2, once: true}}
           sx={{ flexWrap: 'wrap' }}
         >
             {software}
@@ -82,7 +82,7 @@ const Skills = ({ languages, software, other}) => {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1}}
         transition={{ duration: 0.6, delay: 0.8}}
-        viewport={{ amount: 0.9, once: true}}
+        viewport={{ amount: 0.2, once: true}}
       >
         <Typography fontSize="16px">Soft Skills & Other Skills</Typography>
       </MotionBox>
@@ -95,7 +95,7 @@ const Skills = ({ languages, software, other}) => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1}}
           transition={{ duration: 0.6, delay: 0.8}}
-          viewport={{ amount: 0.9, once: true}}
+          viewport={{ amount: 0.2, once: true}}
           sx={{ flexWrap: 'wrap' }}
         >
             {other}

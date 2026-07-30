@@ -36,14 +36,12 @@ import LandingPage from "../../components/LandingPage";
 import AboutMe from "../../components/AboutMe";
 import Skills from "../../components/Skills";
 import ContactForm from "../../components/Contact";
+import Me from "../../logos/163.jpg";
 // import Login from "./scenes/login";
 // import SignIn from "./scenes/signin";
 
 {/* <SkillButton icon={<img src={CloudLogo} alt="Cloud Logo" height="20" width="20"/>} label="Distributed Software"/>
  */}
-
- 
-                    
 
 function Home() {
   const [theme, colorMode] = useMode();
@@ -51,7 +49,6 @@ function Home() {
   const MotionBox = motion(Box);
   const MotionImg = motion("img");
   const MotionDivider = motion(Divider);
-  const MotionJobCard = motion(JobCard);
 
   return (
     <ColorModeContext.Provider value ={colorMode}>
@@ -68,7 +65,7 @@ function Home() {
 
                 {/* Landing */}
                 
-                <LandingPage image={Bread2} alt="Me :3"/>
+                <LandingPage image={Me} alt="Me :3"/>
 
                 {/* Landing */}
 
@@ -77,7 +74,7 @@ function Home() {
                   initial={{ opacity: 0, y: 30}}
                   whileInView={{ opacity: 1, y: 0}}
                   transition={{ duration: 0.6, delay: 0.2}}
-                  viewport={{ amount: 0.5, once: true }}
+                  viewport={{ amount: 0.1, once: true }}
                 >
                   <Typography>About Me</Typography>
                 </MotionDivider>
@@ -144,29 +141,33 @@ function Home() {
 
                 {/* Portfolio */}
 
-                <ProjectCard image={PortfolioWebsite}
-                    title="Liliana Cygnet Personal Website"
-                    description="Here it is guys"
-                    skills={[
-                      <SkillButton icon={<img src={MUILogo} alt="MaterialUI Logo" height="20" width="20"/>} label="Material UI"/>,
-                      <SkillButton icon={<img src={JavaScriptLogo} alt="JS Logo" height="20" width="20"/>} label="JavaScript"/>,
-                      <SkillButton icon={<img src={ReactLogo} alt="React Logo" height="20" width="20"/>} label="React"/>,
-                      <SkillButton icon={<img src={HTMLLogo} alt="HTML Logo" height="20" width="20"/>} label="HTML"/>,
-                      <SkillButton icon={<img src={CSSLogo} alt="CSS Logo" height="20" width="20"/>} label="CSS"/>,
-                      <SkillButton icon={<img src={VSCodeLogo} alt="VSCode Logo" height="20" width="20"/>} label="Visual Studio Code"/>
-                    ]}
-                  />
-                  <ProjectCard image={TID}
-                    title="Turlock Irrigation District Web App"
-                    description="Here it is guys"
-                    skills={[
-                      <SkillButton icon={<img src={MUILogo} alt="MaterialUI Logo" height="20" width="20"/>} label="Material UI"/>,
-                      <SkillButton icon={<img src={JavaScriptLogo} alt="JS Logo" height="20" width="20"/>} label="JavaScript"/>,
-                      <SkillButton icon={<img src={ReactLogo} alt="React Logo" height="20" width="20"/>} label="React"/>,
+                <ProjectCard
+                  image={PortfolioWebsite}
+                  title="Liliana Cygnet Personal Website"
+                  description="The website you’re on right now!  Developed by me as a way to demonstrate my coding skills and to serve as a resumé"
+                  skills={[
+                    <SkillButton icon={<img src={MUILogo} alt="MaterialUI Logo" height="20" width="20"/>} label="Material UI"/>,
+                    <SkillButton icon={<img src={JavaScriptLogo} alt="JS Logo" height="20" width="20"/>} label="JavaScript"/>,
+                    <SkillButton icon={<img src={ReactLogo} alt="React Logo" height="20" width="20"/>} label="React"/>,
+                    <SkillButton icon={<img src={HTMLLogo} alt="HTML Logo" height="20" width="20"/>} label="HTML"/>,
+                    <SkillButton icon={<img src={CSSLogo} alt="CSS Logo" height="20" width="20"/>} label="CSS"/>,
+                    <SkillButton icon={<img src={VSCodeLogo} alt="VSCode Logo" height="20" width="20"/>} label="Visual Studio Code"/>
+                  ]}    
+                />
+                <ProjectCard
+                  image={TID}
+                  title="Turlock Irrigation District Web App"
+                  description="Web app created for Turlock Irrigation District used to manage water orders for farmers in the surrounding areas.  Workers at TID were expected to record data collected in the field and then transfer it to the office database manually; the app seeks to solve this issue by allowing data to be automatically uploaded to the office as it is collected.  Designed and developed by a team including me and 4 others using React, FlaskAPI, and MySQL."
+                  skills={[
+                    <SkillButton icon={<img src={MUILogo} alt="MaterialUI Logo" height="20" width="20"/>} label="Material UI"/>,
+                    <SkillButton icon={<img src={JavaScriptLogo} alt="JS Logo" height="20" width="20"/>} label="JavaScript"/>,
+                    <SkillButton icon={<img src={ReactLogo} alt="React Logo" height="20" width="20"/>} label="React"/>,
+                    <SkillButton icon={<img src={FlaskLogo} alt="Flask Logo" heigh="20" width="20"/>} label="FlaskAPI"/>,
+                    <SkillButton icon={<img src={mySQLLogo} alt="MySQL Logo" heigh="20" width="20"/>} label="MySQL"/>
 
 
-                    ]}
-                  />  
+                  ]}
+                />  
                 {/* Portfolio */}
 
                 <MotionDivider
@@ -182,24 +183,24 @@ function Home() {
 
                 {/* Job History */}
 
-                <MotionJobCard
-                    image={TIDLogo}
-                    title="Turlock Irrigation District"
-                    role="Backend Intern"
-                    date="1-1-24 to 5-5-24"
-                    location="2944 3rd St, Ceres, CA 95307"
-                    description="This opportunity was provided by the University of California School of Engineering as part of the Software Engineering course.  Development used a multi-stage waterfall methodology including research, systems analysis and preliminary design, and finally development.  My development tasks for this project included API design and deployment, as well as data manipulation."
-                    skills={[
-                      <SkillButton icon={<img src={ReactLogo} alt="React Logo" height="20" width="20"/>} label="React"/>,
-                      <SkillButton icon={<img src={PythonLogo} alt="Python Logo" height="30" width="30"/>} label="Python"/>,
-                      <SkillButton icon={<img src={HTMLLogo} alt="HTML Logo" height="30" width="30"/>} label="HTML"/>,
-                      <SkillButton icon={<img src={CSSLogo} alt="CSS Logo" height="30" width="30"/>} label="CSS"/>,
-                      <SkillButton icon={<img src={JavaScriptLogo} alt="JS Logo" height="30" width="30"/>} label="JavaScript"/>,
-                      <SkillButton icon={<img src={mySQLLogo} alt="MySQL Logo" height="30" width="30"/>} label="mySQL"/>,
-                      <SkillButton icon={<img src={VisualStudioLogo} alt="Visual Studio Logo" height="30" width="30"/>} label="Visual Studio"/>,
-                      <SkillButton icon={<img src={GitHubLogo} alt="GitHub Logo" height="30" width="30"/>} label="GitHub"/>,
-                      <SkillButton icon={<img src={VSCodeLogo} alt="VSCode Logo" height="30" width="30"/>} label="Visual Studio Code"/>,
-                      <SkillButton icon={<img src={FlaskLogo} alt="Flask Logo" height="30" width="30"/>} label="FlaskAPI"/>,
+                <JobCard
+                  image={TIDLogo}
+                  title="Turlock Irrigation District"
+                  role="Backend Intern"
+                  date="1-1-24 to 5-5-24"
+                  location="2944 3rd St, Ceres, CA 95307"
+                  description="This opportunity was provided by the University of California School of Engineering as part of the Software Engineering course.  Development used a multi-stage waterfall methodology including research, systems analysis and preliminary design, and finally development.  My development tasks for this project included research, API design and deployment, data manipulation, and presentation to clients."
+                  skills={[
+                    <SkillButton icon={<img src={ReactLogo} alt="React Logo" height="20" width="20"/>} label="React"/>,
+                    <SkillButton icon={<img src={PythonLogo} alt="Python Logo" height="30" width="30"/>} label="Python"/>,
+                    <SkillButton icon={<img src={HTMLLogo} alt="HTML Logo" height="30" width="30"/>} label="HTML"/>,
+                    <SkillButton icon={<img src={CSSLogo} alt="CSS Logo" height="30" width="30"/>} label="CSS"/>,
+                    <SkillButton icon={<img src={JavaScriptLogo} alt="JS Logo" height="30" width="30"/>} label="JavaScript"/>,
+                    <SkillButton icon={<img src={mySQLLogo} alt="MySQL Logo" height="30" width="30"/>} label="mySQL"/>,
+                    <SkillButton icon={<img src={VisualStudioLogo} alt="Visual Studio Logo" height="30" width="30"/>} label="Visual Studio"/>,
+                    <SkillButton icon={<img src={GitHubLogo} alt="GitHub Logo" height="30" width="30"/>} label="GitHub"/>,
+                    <SkillButton icon={<img src={VSCodeLogo} alt="VSCode Logo" height="30" width="30"/>} label="Visual Studio Code"/>,
+                    <SkillButton icon={<img src={FlaskLogo} alt="Flask Logo" height="30" width="30"/>} label="FlaskAPI"/>,
                     ]}
                   />
 

@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
-import prisma from "../prisma/prisma.js";
+import prisma from "./prisma/prisma.js";
 import express from "express";
 import cors from "cors";
-import { generateAccessToken, generateRefreshToken } from "../utils/jwt.js";
+import { generateAccessToken, generateRefreshToken } from "./utils/jwt.js";
 
 const app = express();
 app.use(express.json());

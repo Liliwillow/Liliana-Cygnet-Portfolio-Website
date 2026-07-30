@@ -32,6 +32,7 @@ const Topbar = () => {
       
       display="flex" 
       justifyContent="space-between" 
+      backgroundColor={colors.darkblue[500]}
       p={2}
       animate={{ y: visible ? 0 : "-100%", }}
       transition={{ duration: 0.25, ease: "easeInOut", }}
@@ -41,6 +42,13 @@ const Topbar = () => {
         left: 0,
         width: "100%",
         zIndex: 1000,
+      }}
+
+      sx = {{
+        borderBottom: "2px solid",
+        borderColor: "black",
+        borderBottomLeftRadius: "6px",
+        borderBottomRightRadius: "6px"
       }}
     >
         
@@ -60,7 +68,7 @@ const Topbar = () => {
         </Box>
 
         <Box display="flex">
-            <Button onClick={() => navigate("/register")}
+            {/* <Button onClick={() => navigate("/register")}
               variant="outlined"
               sx={{
                 border: "2px solid",
@@ -70,7 +78,7 @@ const Topbar = () => {
               }}
             >
               <Typography color={colors.white[100]}>Register</Typography>
-            </Button>
+            </Button> */}
             <IconButton onClick={colorMode.toggleColorMode}>
                 {theme.palette.mode === 'dark' ? (
                     <DarkModeOutlinedIcon />

@@ -1,13 +1,19 @@
 import { Card, CardMedia, CardContent, Typography, Stack, useTheme } from "@mui/material";
 import SkillButton from "./SkillButton";
 import { tokens } from "../theme";
+import { motion } from "framer-motion";
 
 const ProjectCard = ({ image, title, description, skills }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const MotionCard = motion(Card);
 
   return (
-    <Card
+    <MotionCard
+      initial={{ opacity: 0, y: 30}}
+      whileInView={{ opacity: 1, y: 0}}
+      transition={{ duration: 0.6, delay: 0.2}}
+      viewport={{ amount: 0.1, once: true }}
       sx={{
         width: "1000px",
         height: "500px",
@@ -61,7 +67,7 @@ const ProjectCard = ({ image, title, description, skills }) => {
             borderRadius: 3,
         }}
       />
-    </Card>
+    </MotionCard>
   );
 };
 
