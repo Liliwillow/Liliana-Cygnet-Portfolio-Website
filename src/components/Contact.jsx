@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { Input, TextField, Box, useTheme, Button, Typography } from "@mui/material";
 import { tokens } from "../theme";
@@ -50,7 +50,8 @@ const ContactForm = () => {
 
   return (
     <Box
-      px="100px"
+      width="1000px"
+      px="200px"
       justifyContent="center"
       alignSelf="center"
     >
@@ -65,14 +66,18 @@ const ContactForm = () => {
             touched,
             handleBlur,
             handleChange,
-            handleSubmit
+            handleSubmit,
+            isSubmitting
         }) => (
-          <form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit}>
             <Box
               display="flex"
               flexDirection="column"
               gap="30px"
               alignSelf="center"
+              sx={{
+                width: "80%"
+              }}
             >
               <Typography alignSelf="center" fontSize="16px" gridRow="1">Help me expand my portfolio!</Typography>
               <TextField
@@ -108,7 +113,8 @@ const ContactForm = () => {
                 error={!!touched.message && !!errors.message}
                 helperText={touched.message && errors.message}/>
               <Button 
-                type="submit" 
+                type="submit"
+                disabled={isSubmitting}
                 variant="outlined" 
                 sx={{
                   color: colors.green[300],
@@ -121,11 +127,11 @@ const ContactForm = () => {
                 }}
                   
               > 
-                Submit 
+                {isSubmitting ? "Submitting..." : "Submit"}
               </Button>
               <Typography alignSelf="center">{result}</Typography>
             </Box>
-          </form>
+          </Form>
         )}
       </Formik>
     </Box>

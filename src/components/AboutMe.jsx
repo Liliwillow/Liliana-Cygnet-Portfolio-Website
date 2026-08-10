@@ -2,10 +2,11 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { tokens } from "../theme";
 
-const AboutMe = ({}) => {
+const AboutMe = ({ image, alt }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const MotionBox = motion(Box);
+  const MotionImg = motion("img");
 
   return(
     <Box
@@ -34,7 +35,7 @@ const AboutMe = ({}) => {
       </MotionBox>
       <MotionBox
         gridColumn="12 / 16"
-        gridRow="1 / 20"
+        gridRow="1 / 18"
         border="5px solid"
         borderRadius="10px"
         borderColor={colors.white[300]}
@@ -44,7 +45,19 @@ const AboutMe = ({}) => {
         transition={{ duration: 0.6, delay: 0.2}}
         viewport={{ amount: 0.1, once: true }} 
       >
-        Another Photo
+        <MotionImg
+            src={image}
+            alt={alt}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1}}
+            transition={{ duration: 0.6, delay: 0.8}}
+            viewport={{ amount: 0.9, once: true}}
+            style={{ width: "100%",
+              height: "100%",
+              objectFit: "cover"
+              
+            }}
+          />
       </MotionBox>
     </Box>
   );

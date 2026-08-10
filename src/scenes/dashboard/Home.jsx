@@ -37,6 +37,7 @@ import AboutMe from "../../components/AboutMe";
 import Skills from "../../components/Skills";
 import ContactForm from "../../components/Contact";
 import Me from "../../logos/163.jpg";
+import MeAgain from "../../logos/116.jpg";
 // import Login from "./scenes/login";
 // import SignIn from "./scenes/signin";
 
@@ -81,7 +82,7 @@ function Home() {
                 
                 {/* About Me */}
 
-                <AboutMe/>
+                <AboutMe image={MeAgain} alt="Me Again :3"/>
                   
                 {/*About Me */}
 

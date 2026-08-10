@@ -25,7 +25,7 @@ const LandingPage = ({ image, alt}) => {
     >
         <MotionBox
           gridColumn="1 / 5"
-          gridRow="1 / 14"
+          gridRow="1 / 16"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -45,7 +45,9 @@ const LandingPage = ({ image, alt}) => {
             whileInView={{ opacity: 1, scale: 1}}
             transition={{ duration: 0.6, delay: 0.8}}
             viewport={{ amount: 0.9, once: true}}
-            style={{ width: "100%"
+            style={{ width: "100%",
+              height: "100%",
+              objectFit: "cover"
               
             }}
           />
